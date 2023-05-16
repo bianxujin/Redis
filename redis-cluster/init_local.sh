@@ -77,6 +77,11 @@ function init_node(){
                 fi
 
                 if [ ! -f "$DATA_DIR/$CUR_PORT/redis.conf" ]; then
+		
+		
+		
+		
+		
                         {
                                 echo "bind $LOCAL_IP"
                                 echo "daemonize yes"
