@@ -18,7 +18,7 @@ REDIS_SRC_DIR=/home/tool/redis-5.0.5
 
 #config file ,pid file, logs,dump file
 DATA_DIR="/data/redis/redis-cluster/data"
-echo $DATA_DIR
+
 #start port and Number of nodes to create. 
 START_PORT=6000
 NUM_OF_NODES=2
