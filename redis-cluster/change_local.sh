@@ -17,7 +17,7 @@ do
 	CUR_PORT=$((START_PORT + i))
   	echo "IP: $LOCAL_IP  Port: $CUR_PORT   config set $1 $2"
   	${REDIS_CLI} -h ${LOCAL_IP} -p ${CUR_PORT}  -c -a ${AUTH} --no-auth-warning config set $1 $2
-  	current_value=$(redis-cli -c -h ${LOCAL_IP} -p ${CUR_PORT}  -a ${AUTH} --no-auth-warning  config get ${KEY} | awk 'NR==2')
+  	current_value=$($REDIS_CLI -c -h ${LOCAL_IP} -p ${CUR_PORT}  -a ${AUTH} --no-auth-warning  config get ${KEY} | awk 'NR==2')
   	if [ "$current_value" = "$2" ]; then
     		echo "$KEY parameter has been modified successfully on node $HOST:$CUR_PORT"
   	else
