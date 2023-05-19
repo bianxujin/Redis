@@ -26,8 +26,8 @@ do
 
 	if grep -q "$KEY" $DATA_DIR/$CUR_PORT/redis.conf;then
 		if grep -q "^#$KEY" $DATA_DIR/$CUR_PORT/redis.conf;then
-		       sed -i "s/^#\($KEY .*\)$/\1/" $DATA_DIR/$CUR_PORT/redis.conf	
-                       sed -i "s/^$KEY .*/$KEY $VALUE/g" $DATA_DIR/$CUR_PORT/redis.conf
+		       #sed -i "s/^#\($KEY .*\)$/\1/" $DATA_DIR/$CUR_PORT/redis.conf	
+                       sed -i "s/^# $KEY .*/$KEY $VALUE/g" $DATA_DIR/$CUR_PORT/redis.conf
 		       echo "11111"
 	        else
 			sed -i "s/^$KEY .*/$KEY $VALUE/g" $DATA_DIR/$CUR_PORT/redis.conf
