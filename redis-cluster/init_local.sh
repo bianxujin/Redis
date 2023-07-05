@@ -77,34 +77,43 @@ function init_node(){
                 fi
 
                 if [ ! -f "$DATA_DIR/$CUR_PORT/redis.conf" ]; then
+			cp $REDIS_HOME/redis_tpl.conf  $DATA_DIR/$CUR_PORT/redis.conf
+                        sed -i "s/^bind 127.0.0.1/bind $LOCAL_IP/"  $DATA_DIR/$CUR_PORT/redis.conf
+                        sed -i "s/inst_port/$CUR_PORT/g" $DATA_DIR/$CUR_PORT/redis.conf
+                        sed -i "s#data_dir#$DATA_DIR#g" $DATA_DIR/$CUR_PORT/redis.conf
+
+
+  
+		                               
+#                       {
+#                               echo "bind $LOCAL_IP"
+#                               echo "daemonize yes"
+#                               echo "timeout 10"
+#                               echo "maxmemory-policy noeviction"
+#                               echo "save ''"
+#                               echo "repl-backlog-size 150mb"
+#                               echo "appendonly no"
+#                               echo "port $CUR_PORT"
+#                               echo "dir $DATA_DIR/$CUR_PORT"
+#                               echo "cluster-enabled yes"
+#                               echo "cluster-require-full-coverage no"
+#                               echo "cluster-node-timeout 20000"
+#                               echo "cluster-config-file nodes_$CUR_PORT.conf"
+#                               echo "pidfile $DATA_DIR/$CUR_PORT/redis_$CUR_PORT.pid"
+#                               echo "logfile $DATA_DIR/$CUR_PORT/redis_$CUR_PORT.log"
+#                               echo "loglevel notice"
+#                               echo "appendonly no"
+#                               echo "protected-mode no"
+#                               echo "requirepass $AUTH"
+#                               echo "masterauth $AUTH"
+#                               echo "maxmemory $maxmemory"
+#                        } >> $DATA_DIR/$CUR_PORT/redis.conf
 		
 		
 		
 		
 		
-                        {
-                                echo "bind $LOCAL_IP"
-                                echo "daemonize yes"
-				echo "timeout 10" 
-				echo "maxmemory-policy noeviction"
-				echo "save ''"
-				echo "repl-backlog-size 150mb"
-				echo "appendonly no"
-                                echo "port $CUR_PORT"
-                                echo "dir $DATA_DIR/$CUR_PORT"
-                                echo "cluster-enabled yes"
-				echo "cluster-require-full-coverage no"	
-                                echo "cluster-node-timeout 20000"
-                                echo "cluster-config-file nodes_$CUR_PORT.conf"
-                                echo "pidfile $DATA_DIR/$CUR_PORT/redis_$CUR_PORT.pid"
-                                echo "logfile $DATA_DIR/$CUR_PORT/redis_$CUR_PORT.log"
-                                echo "loglevel notice"
-                                echo "appendonly no"
-                                echo "protected-mode no"
-                                echo "requirepass $AUTH"
-                                echo "masterauth $AUTH"
-                                echo "maxmemory $maxmemory"
-                        } >> $DATA_DIR/$CUR_PORT/redis.conf
+
                 fi
 done 
 }
