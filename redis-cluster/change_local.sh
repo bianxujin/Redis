@@ -9,7 +9,7 @@ DIR=$(cd "$(dirname "$0")";pwd)
 KEY=$1
 #The value of the configuration parameter
 VALUE=$2
-REDIS_CLI="$REDIS_HOME/redis-5.0.5/src/redis-cli"
+REDIS_CLI="$REDIS_HOME/src/redis-cli"
 CONFILE_FILE=$DATA_DIR/$CUR_PORT/redis.conf
 echo "$CONFILE_FILE"
 for ((i=0; i<NUM_OF_NODES; i++))
