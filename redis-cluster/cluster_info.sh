@@ -5,7 +5,7 @@ DIR=$(cd "$(dirname "$0")";pwd)
 . $DIR/base_info.sh
 . $DIR/init_local.sh
 
-REDIS_CLI="$REDIS_HOME/redis-5.0.5/src/redis-cli"
+REDIS_CLI="$REDIS_HOME/src/redis-cli"
 
 
 
