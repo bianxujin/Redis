@@ -10,11 +10,17 @@ SSH_PORT=22
 #LOCAL_IP=`$IFCONFIG_PATH -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`
 LOCAL_IP=`LC_ALL=C /usr/sbin/ifconfig  -a| grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:"`
 
+
+#REDIS version
+REDIS_VERSION=6.2.14
+
 #The redis binary home directory
-REDIS_HOME="/data/redis/app"
+REDIS_HOME="/data/redis/app/redis-$REDIS_VERSION"
+
+
 
 #The redis software dir
-REDIS_SRC_DIR=/home/tool/redis-5.0.5
+REDIS_SRC_DIR=/home/tool/redis-$REDIS_VERSION
 
 #config file ,pid file, logs,dump file
 DATA_DIR="/data/redis/redis-cluster/data"
