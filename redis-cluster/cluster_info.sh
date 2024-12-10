@@ -20,7 +20,7 @@ for master in $masters; do
     master_ip=$(echo $master_info | awk -F ' ' '{print $1}')
     master_port=$(echo $master_info | awk -F ' ' '{print $2}')
     hash_solt=$(echo $master | awk '{print $NF}')
-    slaves=$($REDIS_CLI -h ${LOCAL_IP} -p ${CUR_PORT}  -c -a ${AUTH} --no-auth-warning cluster nodes | grep "slave" | grep 'handshake|fail' | grep $master_id)
+    slaves=$($REDIS_CLI -h ${LOCAL_IP} -p ${CUR_PORT}  -c -a ${AUTH} --no-auth-warning cluster nodes | grep "slave" | grep -v 'handshake|fail' | grep $master_id)
     # 遍历所有从节点，输出其IP和端口
     for slave in $slaves
     do   
